@@ -11,7 +11,6 @@ var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
 var app_routing_module_1 = require("./app-routing.module");
 var app_component_1 = require("./app.component");
-var toolbar_1 = require("@angular/material/toolbar");
 var registro_component_1 = require("./pages/registro/registro.component");
 var home_component_1 = require("./pages/home/home.component");
 var login_component_1 = require("./pages/login/login.component");
@@ -19,7 +18,7 @@ var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/common/http");
 var router_1 = require("@angular/router");
 var animations_1 = require("@angular/platform-browser/animations");
-var button_1 = require("@angular/material/button");
+var material_module_1 = require("./material.module");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -38,8 +37,7 @@ var AppModule = /** @class */ (function () {
                 forms_1.FormsModule,
                 router_1.RouterModule,
                 animations_1.BrowserAnimationsModule,
-                toolbar_1.MatToolbarModule,
-                button_1.MatButtonModule
+                material_module_1.MaterialModule,
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent]
