@@ -17,7 +17,7 @@ var routes = [
     { path: 'home', component: home_component_1.HomeComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'registro', component: registro_component_1.RegistroComponent },
     { path: 'login', component: login_component_1.LoginComponent },
-    { path: '**', redirectTo: 'registro' }
+    { path: '**', redirectTo: 'login' }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {

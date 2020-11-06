@@ -31,7 +31,9 @@ var AuthService = /** @class */ (function () {
         this.apikey = 'AIzaSyCcfUJDaTKunHiKCbUYMaMquRK3zx4PkOA';
         this.leerToken();
     }
-    AuthService.prototype.logout = function () { };
+    AuthService.prototype.logout = function () {
+        localStorage.removeItem('token');
+    };
     AuthService.prototype.login = function (usuario) {
         var _this = this;
         var authData = __assign(__assign({}, usuario), { returnSecureToken: true });
