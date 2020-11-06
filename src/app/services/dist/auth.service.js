@@ -64,6 +64,9 @@ var AuthService = /** @class */ (function () {
         }
         return this.userToken;
     };
+    AuthService.prototype.estaAutenticado = function () {
+        return this.userToken.length > 2;
+    };
     AuthService = __decorate([
         core_1.Injectable({
             providedIn: 'root'
