@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http'
 export class AuthService {
 
 
-  private url = ''
+  private url = 'https://identitytoolkit.googleapis.com/v1/accounts:'
   private apikey  = 'AIzaSyCcfUJDaTKunHiKCbUYMaMquRK3zx4PkOA'
 
   //crear session
@@ -23,6 +23,16 @@ export class AuthService {
 
   login(usuario : UsuarioModel){}
 
-  nuevoUusuario( usuario: UsuarioModel){}
+  nuevoUsuario( usuario: UsuarioModel){
+    const authData = {
+      ...usuario,
+      returnSecureToken:true
+    };
+
+    return this.http.post(
+    `${this.url}signUp?key=${this.apikey}`,
+    authData
+    );
+  }
 
 }

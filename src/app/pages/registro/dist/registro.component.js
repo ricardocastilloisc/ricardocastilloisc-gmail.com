@@ -10,16 +10,22 @@ exports.RegistroComponent = void 0;
 var core_1 = require("@angular/core");
 var usuario_model_1 = require("../../models/usuario.model");
 var RegistroComponent = /** @class */ (function () {
-    function RegistroComponent() {
-        this.usuario = new usuario_model_1.UsuarioModel();
+    function RegistroComponent(auth) {
+        this.auth = auth;
     }
-    RegistroComponent.prototype.ngOnInit = function () { };
+    RegistroComponent.prototype.ngOnInit = function () {
+        this.usuario = new usuario_model_1.UsuarioModel();
+    };
     RegistroComponent.prototype.onSubmit = function (form) {
         if (form.invalid) {
             return;
         }
-        console.log(this.usuario);
-        console.log(form);
+        this.auth.nuevoUsuario(this.usuario)
+            .subscribe(function (resp) {
+            console.log(resp);
+        }, function (err) {
+            console.log(err.error.error.message);
+        });
     };
     RegistroComponent = __decorate([
         core_1.Component({
