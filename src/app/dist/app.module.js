@@ -16,6 +16,7 @@ var home_component_1 = require("./pages/home/home.component");
 var login_component_1 = require("./pages/login/login.component");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/common/http");
+var router_1 = require("@angular/router");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -31,7 +32,8 @@ var AppModule = /** @class */ (function () {
                 platform_browser_1.BrowserModule,
                 app_routing_module_1.AppRoutingModule,
                 http_1.HttpClientModule,
-                forms_1.FormsModule
+                forms_1.FormsModule,
+                router_1.RouterModule
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent]

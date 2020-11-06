@@ -8,23 +8,39 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 exports.__esModule = true;
 exports.LoginComponent = void 0;
 var core_1 = require("@angular/core");
+var sweetalert2_1 = require("sweetalert2");
 var usuario_model_1 = require("../../models/usuario.model");
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(auth) {
+    function LoginComponent(auth, router) {
         this.auth = auth;
+        this.router = router;
         this.usuario = new usuario_model_1.UsuarioModel();
     }
     LoginComponent.prototype.ngOnInit = function () {
     };
     LoginComponent.prototype.login = function (form) {
+        var _this = this;
         if (form.invalid) {
             return;
         }
+        sweetalert2_1["default"].fire({
+            allowOutsideClick: false,
+            icon: 'info',
+            text: 'Espere por favor...'
+        });
+        sweetalert2_1["default"].showLoading();
         this.auth.login(this.usuario)
             .subscribe(function (resp) {
             console.log(resp);
+            sweetalert2_1["default"].close();
+            _this.router.navigateByUrl('/home');
         }, function (err) {
             console.log(err.error.error.message);
+            sweetalert2_1["default"].fire({
+                icon: 'error',
+                title: 'Error al autenticar',
+                text: err.error.error.message
+            });
         });
     };
     LoginComponent = __decorate([
