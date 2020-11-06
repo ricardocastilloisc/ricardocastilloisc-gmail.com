@@ -1,7 +1,8 @@
 import { ThrowStmt } from '@angular/compiler';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
-import { NgModel } from '@angular/forms';
+import { NgForm, NgModel } from '@angular/forms';
+import { formatWithOptions } from 'util';
 import { UsuarioModel } from '../../models/usuario.model';
 
 @Component({
@@ -20,9 +21,11 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit() { }
 
-  onSubmit()
+  onSubmit( form: NgForm)
   {
+    if( form.invalid ) {return;}
     console.log(this.usuario);
+    console.log(form);
   }
 
 }
