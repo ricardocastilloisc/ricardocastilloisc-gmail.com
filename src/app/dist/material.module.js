@@ -12,6 +12,7 @@ var common_1 = require("@angular/common");
 var toolbar_1 = require("@angular/material/toolbar");
 var button_1 = require("@angular/material/button");
 var progress_bar_1 = require("@angular/material/progress-bar");
+var card_1 = require("@angular/material/card");
 var MaterialModule = /** @class */ (function () {
     function MaterialModule() {
     }
@@ -23,11 +24,13 @@ var MaterialModule = /** @class */ (function () {
                 toolbar_1.MatToolbarModule,
                 button_1.MatButtonModule,
                 progress_bar_1.MatProgressBarModule,
+                card_1.MatCardModule,
             ],
             exports: [
                 toolbar_1.MatToolbarModule,
                 button_1.MatButtonModule,
                 progress_bar_1.MatProgressBarModule,
+                card_1.MatCardModule,
             ]
         })
     ], MaterialModule);

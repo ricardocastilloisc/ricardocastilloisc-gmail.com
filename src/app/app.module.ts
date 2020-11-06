@@ -14,13 +14,15 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import { MaterialModule } from './material.module';
+import { MapaComponent } from './components/mapa/mapa.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistroComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    MapaComponent
   ],
   imports: [
     BrowserModule,
