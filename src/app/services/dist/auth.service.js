@@ -19,6 +19,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 exports.__esModule = true;
 exports.AuthService = void 0;
 var core_1 = require("@angular/core");
+var operators_1 = require("rxjs/operators");
 var AuthService = /** @class */ (function () {
     //crear session
     //https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]
@@ -28,15 +29,40 @@ var AuthService = /** @class */ (function () {
         this.http = http;
         this.url = 'https://identitytoolkit.googleapis.com/v1/accounts:';
         this.apikey = 'AIzaSyCcfUJDaTKunHiKCbUYMaMquRK3zx4PkOA';
+        this.leerToken();
     }
     AuthService.prototype.logout = function () { };
     AuthService.prototype.login = function (usuario) {
+        var _this = this;
         var authData = __assign(__assign({}, usuario), { returnSecureToken: true });
-        return this.http.post(this.url + "signInWithPassword?key=" + this.apikey, authData);
+        return this.http.post(this.url + "signInWithPassword?key=" + this.apikey, authData).pipe(operators_1.map(function (resp) {
+            console.log('Entro en al mapa del RXJS');
+            _this.guardarToken(resp['idToken']);
+            return resp;
+        }));
+        ;
     };
     AuthService.prototype.nuevoUsuario = function (usuario) {
+        var _this = this;
         var authData = __assign(__assign({}, usuario), { returnSecureToken: true });
-        return this.http.post(this.url + "signUp?key=" + this.apikey, authData);
+        return this.http.post(this.url + "signUp?key=" + this.apikey, authData).pipe(operators_1.map(function (resp) {
+            console.log('Entro en al mapa del RXJS');
+            _this.guardarToken(resp['idToken']);
+            return resp;
+        }));
+    };
+    AuthService.prototype.guardarToken = function (idToken) {
+        this.userToken = idToken;
+        localStorage.setItem('token', idToken);
+    };
+    AuthService.prototype.leerToken = function () {
+        if (localStorage.getItem('token')) {
+            this.userToken = localStorage.getItem('token');
+        }
+        else {
+            this.userToken = '';
+        }
+        return this.userToken;
     };
     AuthService = __decorate([
         core_1.Injectable({
