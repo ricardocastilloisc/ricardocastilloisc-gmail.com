@@ -12,7 +12,6 @@ var usuario_model_1 = require("../../models/usuario.model");
 var RegistroComponent = /** @class */ (function () {
     function RegistroComponent() {
         this.usuario = new usuario_model_1.UsuarioModel();
-        this.usuario.email = 'ricaror@hotmail.com';
     }
     RegistroComponent.prototype.ngOnInit = function () { };
     RegistroComponent.prototype.onSubmit = function (form) {
