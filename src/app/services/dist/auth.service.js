@@ -56,6 +56,9 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.guardarToken = function (idToken) {
         this.userToken = idToken;
         localStorage.setItem('token', idToken);
+        var hoy = new Date();
+        hoy.setSeconds(3600);
+        localStorage.setItem('expira', hoy.getTime().toString());
     };
     AuthService.prototype.leerToken = function () {
         if (localStorage.getItem('token')) {
@@ -67,7 +70,18 @@ var AuthService = /** @class */ (function () {
         return this.userToken;
     };
     AuthService.prototype.estaAutenticado = function () {
-        return this.userToken.length > 2;
+        if (this.userToken.length < 2) {
+            return false;
+        }
+        var expira = Number(localStorage.getItem('expira'));
+        var expiraDate = new Date();
+        expiraDate.setTime(expira);
+        if (expiraDate > new Date()) {
+            return true;
+        }
+        else {
+            return false;
+        }
     };
     AuthService = __decorate([
         core_1.Injectable({
