@@ -15,8 +15,13 @@ var LoginComponent = /** @class */ (function () {
         this.auth = auth;
         this.router = router;
         this.usuario = new usuario_model_1.UsuarioModel();
+        this.recordarme = false;
     }
     LoginComponent.prototype.ngOnInit = function () {
+        if (localStorage.getItem('email')) {
+            this.usuario.email = localStorage.getItem('email');
+            this.recordarme = true;
+        }
     };
     LoginComponent.prototype.login = function (form) {
         var _this = this;
@@ -33,6 +38,9 @@ var LoginComponent = /** @class */ (function () {
             .subscribe(function (resp) {
             console.log(resp);
             sweetalert2_1["default"].close();
+            if (_this.recordarme) {
+                localStorage.setItem('email', _this.usuario.email);
+            }
             _this.router.navigateByUrl('/home');
         }, function (err) {
             console.log(err.error.error.message);

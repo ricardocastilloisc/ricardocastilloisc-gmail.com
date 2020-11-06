@@ -14,6 +14,7 @@ var RegistroComponent = /** @class */ (function () {
     function RegistroComponent(auth, router) {
         this.auth = auth;
         this.router = router;
+        this.recordarme = false;
     }
     RegistroComponent.prototype.ngOnInit = function () {
         this.usuario = new usuario_model_1.UsuarioModel();
@@ -33,6 +34,9 @@ var RegistroComponent = /** @class */ (function () {
             .subscribe(function (resp) {
             console.log(resp);
             sweetalert2_1["default"].close();
+            if (_this.recordarme) {
+                localStorage.setItem('email', _this.usuario.email);
+            }
             _this.router.navigateByUrl('/home');
         }, function (err) {
             console.log(err.error.error.message);
