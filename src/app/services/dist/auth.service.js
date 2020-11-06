@@ -30,7 +30,10 @@ var AuthService = /** @class */ (function () {
         this.apikey = 'AIzaSyCcfUJDaTKunHiKCbUYMaMquRK3zx4PkOA';
     }
     AuthService.prototype.logout = function () { };
-    AuthService.prototype.login = function (usuario) { };
+    AuthService.prototype.login = function (usuario) {
+        var authData = __assign(__assign({}, usuario), { returnSecureToken: true });
+        return this.http.post(this.url + "signInWithPassword?key=" + this.apikey, authData);
+    };
     AuthService.prototype.nuevoUsuario = function (usuario) {
         var authData = __assign(__assign({}, usuario), { returnSecureToken: true });
         return this.http.post(this.url + "signUp?key=" + this.apikey, authData);

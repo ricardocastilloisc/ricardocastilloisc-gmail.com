@@ -10,7 +10,8 @@ exports.LoginComponent = void 0;
 var core_1 = require("@angular/core");
 var usuario_model_1 = require("../../models/usuario.model");
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent() {
+    function LoginComponent(auth) {
+        this.auth = auth;
         this.usuario = new usuario_model_1.UsuarioModel();
     }
     LoginComponent.prototype.ngOnInit = function () {
@@ -19,8 +20,12 @@ var LoginComponent = /** @class */ (function () {
         if (form.invalid) {
             return;
         }
-        console.log(this.usuario);
-        console.log(form);
+        this.auth.login(this.usuario)
+            .subscribe(function (resp) {
+            console.log(resp);
+        }, function (err) {
+            console.log(err.error.error.message);
+        });
     };
     LoginComponent = __decorate([
         core_1.Component({
