@@ -1,13 +1,18 @@
 <mat-card>
     <mat-card-title>Mapa</mat-card-title>
     <mat-card-content>
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="15">
+            <agm-marker [latitude]="lat" [longitude]="lng">
+                <agm-info-window>
+                    <strong>Titulo</strong>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, tempora iusto! Commodi quidem, dolorum eum voluptas reprehenderit possimus rerum natus nobis ad vitae quae perspiciatis debitis amet! Illo, maxime rem?</p>
+                    <div>
+                        <button mat-raised-button color="primary">Editar</button>
+                        <button mat-raised-button color="warn">Borrar</button>
+                    </div>
+                </agm-info-window>
 
-        <h1>{{ title }}</h1>
-
-        <!-- this creates a google map on the page with the given lat/lng from -->
-        <!-- the component as the initial center of the map: -->
-        <agm-map [latitude]="lat" [longitude]="lng">
-            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+            </agm-marker>
         </agm-map>
     </mat-card-content>
 </mat-card>

@@ -10,9 +10,8 @@ exports.MapaComponent = void 0;
 var core_1 = require("@angular/core");
 var MapaComponent = /** @class */ (function () {
     function MapaComponent() {
-        this.title = 'My first AGM project';
-        this.lat = 51.678418;
-        this.lng = 7.809007;
+        this.lat = 18.6744431;
+        this.lng = -88.4009275;
     }
     MapaComponent.prototype.ngOnInit = function () {
     };

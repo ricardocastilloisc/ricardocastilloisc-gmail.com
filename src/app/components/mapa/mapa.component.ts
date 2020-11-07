@@ -7,11 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapaComponent implements OnInit {
 
-  title = 'My first AGM project';
-  lat = 51.678418;
-  lng = 7.809007;
+  lat = 18.6744431;
+  lng = -88.4009275;
 
-  
+
   constructor() {
 
   }
