@@ -12,9 +12,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule} from '@angular/material/button';
 import { MaterialModule } from './material.module';
 import { MapaComponent } from './components/mapa/mapa.component';
+import { AgmCoreModule } from '@agm/core';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { MapaComponent } from './components/mapa/mapa.component';
     RegistroComponent,
     HomeComponent,
     LoginComponent,
-    MapaComponent
+    MapaComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,9 +33,15 @@ import { MapaComponent } from './components/mapa/mapa.component';
     RouterModule,
     BrowserAnimationsModule,
     MaterialModule,
-
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBOnoATvpf2EA_RiJgiV2VeTZ4YOgRNLz8'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+//apikey
+//AIzaSyBOnoATvpf2EA_RiJgiV2VeTZ4YOgRNLz8

@@ -19,6 +19,8 @@ var http_1 = require("@angular/common/http");
 var router_1 = require("@angular/router");
 var animations_1 = require("@angular/platform-browser/animations");
 var material_module_1 = require("./material.module");
+var mapa_component_1 = require("./components/mapa/mapa.component");
+var core_2 = require("@agm/core");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -28,7 +30,8 @@ var AppModule = /** @class */ (function () {
                 app_component_1.AppComponent,
                 registro_component_1.RegistroComponent,
                 home_component_1.HomeComponent,
-                login_component_1.LoginComponent
+                login_component_1.LoginComponent,
+                mapa_component_1.MapaComponent,
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -38,6 +41,9 @@ var AppModule = /** @class */ (function () {
                 router_1.RouterModule,
                 animations_1.BrowserAnimationsModule,
                 material_module_1.MaterialModule,
+                core_2.AgmCoreModule.forRoot({
+                    apiKey: 'AIzaSyBOnoATvpf2EA_RiJgiV2VeTZ4YOgRNLz8'
+                })
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent]
@@ -46,3 +52,5 @@ var AppModule = /** @class */ (function () {
     return AppModule;
 }());
 exports.AppModule = AppModule;
+//apikey
+//AIzaSyBOnoATvpf2EA_RiJgiV2VeTZ4YOgRNLz8
