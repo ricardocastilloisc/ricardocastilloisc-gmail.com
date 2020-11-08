@@ -8,12 +8,47 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 exports.__esModule = true;
 exports.MapaComponent = void 0;
 var core_1 = require("@angular/core");
+var marcador_class_1 = require("../../classes/marcador.class");
+var altamarcador_component_1 = require("../../dialog/altamarcador/altamarcador.component");
 var MapaComponent = /** @class */ (function () {
-    function MapaComponent() {
-        this.lat = 18.6744431;
-        this.lng = -88.4009275;
+    function MapaComponent(dialog, snackBar, servicio) {
+        this.dialog = dialog;
+        this.snackBar = snackBar;
+        this.servicio = servicio;
+        this.marcadores = [];
+        this.lat = 20.4179075;
+        this.lng = -87.9156008;
     }
     MapaComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        var nuevoMarcador = new marcador_class_1.Marcador(20.4179075, -87.9156008, 'Quintana Roo', 'Quintana Roo');
+        this.marcadores.push(nuevoMarcador);
+        this.servicio.getUbicaciones().subscribe(function (res) {
+            var arreglo = res.recordset;
+            for (var i = 0; i < arreglo.length; i++) {
+                var nuevoMarcadorRespo = new marcador_class_1.Marcador(Number(arreglo[i].a.trim()), Number(arreglo[i].b.trim()), arreglo[i].id.trim(), arreglo[i].c.trim());
+                _this.marcadores.push(nuevoMarcadorRespo);
+            }
+        });
+    };
+    /*
+      agregarMarcador( evento ) {
+    
+        const coords: { lat: number, lng: number } = evento.coords;
+    
+        const nuevoMarcador = new Marcador( coords.lat, coords.lng );
+    
+        this.marcadores.push( nuevoMarcador );
+    
+        this.snackBar.open('Marcador agregado', 'Cerrar', { duration: 3000 });
+    
+      }
+    */
+    MapaComponent.prototype.dialogoAlta = function () {
+        var dialogRef = this.dialog.open(altamarcador_component_1.AltamarcadorComponent, {
+            width: '250px',
+            data: {}
+        });
     };
     MapaComponent = __decorate([
         core_1.Component({
