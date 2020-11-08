@@ -6,25 +6,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 exports.__esModule = true;
-exports.ServicioService = void 0;
+exports.GuestGuard = void 0;
 var core_1 = require("@angular/core");
-var environment_1 = require("src/environments/environment");
-var ServicioService = /** @class */ (function () {
-    function ServicioService(http) {
-        this.http = http;
-        this.url = environment_1.environment.url;
+var GuestGuard = /** @class */ (function () {
+    function GuestGuard(auth, router) {
+        this.auth = auth;
+        this.router = router;
     }
-    ServicioService.prototype.getUbicaciones = function () {
-        return this.http.get(this.url + "api/empleado");
+    GuestGuard.prototype.canActivate = function () {
+        if (!this.auth.estaAutenticado()) {
+            return true;
+        }
+        else {
+            this.router.navigateByUrl('/home');
+            return false;
+        }
     };
-    ServicioService.prototype.postUbicaciones = function (body) {
-        return this.http.post(this.url + "api/empleado", body);
-    };
-    ServicioService = __decorate([
+    GuestGuard = __decorate([
         core_1.Injectable({
             providedIn: 'root'
         })
-    ], ServicioService);
-    return ServicioService;
+    ], GuestGuard);
+    return GuestGuard;
 }());
-exports.ServicioService = ServicioService;
+exports.GuestGuard = GuestGuard;

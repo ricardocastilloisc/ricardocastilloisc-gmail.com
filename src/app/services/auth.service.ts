@@ -26,6 +26,7 @@ export class AuthService {
   }
 
   logout(){
+    this.leerToken();
     localStorage.removeItem('token');
   }
 
@@ -40,7 +41,6 @@ export class AuthService {
     authData
     ).pipe(
       map( resp => {
-        console.log('Entro en al mapa del RXJS');
         this.guardarToken( resp['idToken']);
         return resp
       })

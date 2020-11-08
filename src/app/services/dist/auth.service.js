@@ -32,13 +32,13 @@ var AuthService = /** @class */ (function () {
         this.leerToken();
     }
     AuthService.prototype.logout = function () {
+        this.leerToken();
         localStorage.removeItem('token');
     };
     AuthService.prototype.login = function (usuario) {
         var _this = this;
         var authData = __assign(__assign({}, usuario), { returnSecureToken: true });
         return this.http.post(this.url + "signInWithPassword?key=" + this.apikey, authData).pipe(operators_1.map(function (resp) {
-            console.log('Entro en al mapa del RXJS');
             _this.guardarToken(resp['idToken']);
             return resp;
         }));

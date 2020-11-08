@@ -19,6 +19,14 @@ var AltamarcadorComponent = /** @class */ (function () {
     }
     AltamarcadorComponent.prototype.ngOnInit = function () {
     };
+    AltamarcadorComponent.prototype.confirmarRegistro = function () {
+        var datos = {
+            latitud: this.latitud,
+            longitud: this.longitud,
+            nombrelugar: this.nombreLugar
+        };
+        this.dialogRef.close(datos);
+    };
     AltamarcadorComponent = __decorate([
         core_1.Component({
             selector: 'app-altamarcador',

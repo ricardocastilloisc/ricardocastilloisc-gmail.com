@@ -1,15 +1,31 @@
-<div class="row">
-    <div class="col-xs-12">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-11">
-                    <label class="control-label">Nombre despacho*</label>
-                    <mat-form-field>
-                        <input matInput type="text" />
-                    </mat-form-field>
-                </div>
-            </div>
-
+<div>
+    <div class="row">
+        <div class="col-md-11">
+            <label class="control-label">Nombre de lugar</label>
+            <mat-form-field>
+                <input matInput type="text" [(ngModel)]="nombreLugar" />
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-11">
+            <label class="control-label">Latitud</label>
+            <mat-form-field>
+                <input matInput type="text" [(ngModel)]="latitud" />
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-11">
+            <label class="control-label">Longitud</label>
+            <mat-form-field>
+                <input matInput type="text" [(ngModel)]="longitud" />
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-11">
+            <button mat-raised-button color="primary" (click)="confirmarRegistro()"> Registrar Lugar</button>
         </div>
     </div>
 </div>

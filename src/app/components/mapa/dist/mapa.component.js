@@ -20,6 +20,9 @@ var MapaComponent = /** @class */ (function () {
         this.lng = -87.9156008;
     }
     MapaComponent.prototype.ngOnInit = function () {
+        this.CargarMarcadores();
+    };
+    MapaComponent.prototype.CargarMarcadores = function () {
         var _this = this;
         var nuevoMarcador = new marcador_class_1.Marcador(20.4179075, -87.9156008, 'Quintana Roo', 'Quintana Roo');
         this.marcadores.push(nuevoMarcador);
@@ -45,9 +48,24 @@ var MapaComponent = /** @class */ (function () {
       }
     */
     MapaComponent.prototype.dialogoAlta = function () {
+        var _this = this;
         var dialogRef = this.dialog.open(altamarcador_component_1.AltamarcadorComponent, {
-            width: '250px',
+            width: '800px',
+            height: '100%',
             data: {}
+        });
+        dialogRef.afterClosed().subscribe(function (res) {
+            if (res) {
+                var body = {
+                    id: res.nombrelugar,
+                    aa: res.latitud,
+                    bb: res.longitud
+                };
+                _this.servicio.postUbicaciones(body).subscribe(function (res) {
+                    _this.CargarMarcadores();
+                    _this.snackBar.open('Marcador agregado', 'Cerrar', { duration: 3000 });
+                });
+            }
         });
     };
     MapaComponent = __decorate([

@@ -29,6 +29,12 @@ export class MapaComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.CargarMarcadores();
+  }
+
+
+  CargarMarcadores()
+  {
     const nuevoMarcador = new Marcador(20.4179075,-87.9156008,'Quintana Roo', 'Quintana Roo');
     this.marcadores.push(nuevoMarcador);
 
@@ -46,6 +52,7 @@ export class MapaComponent implements OnInit {
        }
       });
   }
+
 /*
   agregarMarcador( evento ) {
 
@@ -61,9 +68,31 @@ export class MapaComponent implements OnInit {
 */
   dialogoAlta() {
     const dialogRef = this.dialog.open(AltamarcadorComponent, {
-      width: '250px',
+      width: '800px',
+      height: '100%',
       data: {},
     });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res) {
+
+          const body = {
+            id: res.nombrelugar,
+            aa: res.latitud,
+            bb: res.longitud
+          }
+
+          this.servicio.postUbicaciones(body).subscribe((res) => {
+            this.CargarMarcadores();
+            this.snackBar.open('Marcador agregado', 'Cerrar', { duration: 3000 });
+          });
+
+
+        }
+      }
+    );
   }
+
+
 
 }

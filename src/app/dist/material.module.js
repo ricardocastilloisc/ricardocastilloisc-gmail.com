@@ -14,6 +14,7 @@ var button_1 = require("@angular/material/button");
 var progress_bar_1 = require("@angular/material/progress-bar");
 var card_1 = require("@angular/material/card");
 var snack_bar_1 = require("@angular/material/snack-bar");
+var form_field_1 = require("@angular/material/form-field");
 var MaterialModule = /** @class */ (function () {
     function MaterialModule() {
     }
@@ -26,13 +27,15 @@ var MaterialModule = /** @class */ (function () {
                 button_1.MatButtonModule,
                 progress_bar_1.MatProgressBarModule,
                 card_1.MatCardModule,
-                snack_bar_1.MatSnackBarModule
+                snack_bar_1.MatSnackBarModule,
+                form_field_1.MatFormFieldModule
             ],
             exports: [
                 toolbar_1.MatToolbarModule,
                 button_1.MatButtonModule,
                 progress_bar_1.MatProgressBarModule,
                 card_1.MatCardModule,
+                form_field_1.MatFormFieldModule,
                 snack_bar_1.MatSnackBarModule
             ]
         })

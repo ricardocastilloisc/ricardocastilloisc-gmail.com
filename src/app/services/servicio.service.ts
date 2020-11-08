@@ -16,4 +16,11 @@ export class ServicioService {
   {
     return this.http.get(`${this.url}api/empleado`)
   }
+
+  postUbicaciones(body): Observable<any>
+  {
+    return this.http.post(`${this.url}api/empleado`,body)
+  }
+
+
 }
