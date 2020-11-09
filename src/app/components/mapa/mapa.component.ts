@@ -14,6 +14,8 @@ export class MapaComponent implements OnInit {
 
   marcadores: Marcador[] = [];
 
+  lineas: any[] = [];
+
   lat =   20.4179075;
 
   lng = -87.9156008;
@@ -50,6 +52,36 @@ export class MapaComponent implements OnInit {
             );
           this.marcadores.push(nuevoMarcadorRespo);
        }
+       if(this.marcadores.length % 2 == 0) {
+        //return "par";
+
+        for(let x = 0; x < arreglo.length; x = x+2)
+        {
+
+          this.lineas.push(
+            {
+              latA: this.marcadores[x].lat,
+              lngA: this.marcadores[x].lng,
+              latB: this.marcadores[x+1].lat,
+              lngB: this.marcadores[x+1].lng,
+            }
+            );
+        }
+    }else {
+        for(let x = 0; x < arreglo.length - 1; x = x+2)
+        {
+          this.lineas.push(
+            {
+              latA: this.marcadores[x].lat,
+              lngA: this.marcadores[x].lng,
+              latB: this.marcadores[x+1].lat,
+              lngB: this.marcadores[x+1].lng,
+            }
+            );
+        }
+      }
+
+      console.log(this.lineas);
       });
   }
 

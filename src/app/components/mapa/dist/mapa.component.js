@@ -16,6 +16,7 @@ var MapaComponent = /** @class */ (function () {
         this.snackBar = snackBar;
         this.servicio = servicio;
         this.marcadores = [];
+        this.lineas = [];
         this.lat = 20.4179075;
         this.lng = -87.9156008;
     }
@@ -32,6 +33,28 @@ var MapaComponent = /** @class */ (function () {
                 var nuevoMarcadorRespo = new marcador_class_1.Marcador(Number(arreglo[i].a.trim()), Number(arreglo[i].b.trim()), arreglo[i].id.trim(), arreglo[i].c.trim());
                 _this.marcadores.push(nuevoMarcadorRespo);
             }
+            if (_this.marcadores.length % 2 == 0) {
+                //return "par";
+                for (var x = 0; x < arreglo.length; x = x + 2) {
+                    _this.lineas.push({
+                        latA: _this.marcadores[x].lat,
+                        lngA: _this.marcadores[x].lng,
+                        latB: _this.marcadores[x + 1].lat,
+                        lngB: _this.marcadores[x + 1].lng
+                    });
+                }
+            }
+            else {
+                for (var x = 0; x < arreglo.length - 1; x = x + 2) {
+                    _this.lineas.push({
+                        latA: _this.marcadores[x].lat,
+                        lngA: _this.marcadores[x].lng,
+                        latB: _this.marcadores[x + 1].lat,
+                        lngB: _this.marcadores[x + 1].lng
+                    });
+                }
+            }
+            console.log(_this.lineas);
         });
     };
     /*

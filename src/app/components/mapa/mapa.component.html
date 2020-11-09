@@ -14,14 +14,24 @@
             <agm-marker [latitude]="destination.lat" [longitude]="destination.lng">
             </agm-marker>
 
-
           -->
+
+            <agm-polyline [strokeColor]="'red'" *ngFor="let linea of lineas;">
+                <agm-polyline-point [latitude]="linea.latA" [longitude]="linea.lngA">
+                </agm-polyline-point>
+                <agm-polyline-point [latitude]="linea.latB" [longitude]="linea.lngB">
+                </agm-polyline-point>
+
+            </agm-polyline>
+
 
             <agm-marker *ngFor="let marcador of marcadores;" [latitude]="marcador.lat" [longitude]="marcador.lng">
 
                 <agm-info-window>
                     <strong>{{ marcador.titulo }}</strong>
                 </agm-info-window>
+
+
 
             </agm-marker>
 
