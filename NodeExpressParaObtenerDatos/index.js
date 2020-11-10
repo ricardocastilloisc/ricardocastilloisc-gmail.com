@@ -4,7 +4,7 @@ const express = require('express');
 const bodyParser = require("body-parser");
 const sql = require("mssql");
 const app = express(); 
-const port = 3000
+const PORT = process.env.PORT || 3050;
 
 
 
@@ -83,6 +83,4 @@ app.post("/api/empleado", function(req , res){
 
 exports.app = functions.https.onRequest(app);
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

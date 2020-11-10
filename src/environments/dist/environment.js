@@ -5,7 +5,7 @@
 exports.__esModule = true;
 exports.environment = void 0;
 exports.environment = {
-    url: 'http://127.0.0.1:3000/',
+    url: 'https://prueba-node-expres.herokuapp.com/',
     production: false
 };
 /*
